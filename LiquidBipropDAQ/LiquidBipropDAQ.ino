@@ -88,13 +88,12 @@ void loop() {
     prevTime = currentTime; 
   }
 
-  // send sparks if sparking is true for 3 seconds, cooldown is 30 seconds 
+  // send sparks if sparking is true for 3 seconds, cooldown is gaptime(45) seconds 
   // spark is 3 ms on, 2 ms off 
 
   // delay total time 
   if (sparking && currentTime - pressTime > gapTime) {
     sparking = false;
-    // TODO: double check if sendspark is needed  
     digitalWrite(sparkOutput, LOW); 
   }
 
@@ -185,6 +184,11 @@ void printPC() {
 void printLoad() {
   load = analogRead(loadPin); 
   load = load*adcConvert; 
+  if (load <= 0.03) {
+    load = 0; 
+  } else {
+    load = (load + 0.1237) / 0.0075; 
+  }  
   Serial.print(load); 
   Serial.print(", "); 
 }
