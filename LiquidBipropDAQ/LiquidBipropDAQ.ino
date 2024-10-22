@@ -159,11 +159,10 @@ void printEL() {
 
 void printEC() {
   EC = analogRead(ECPin);
-  EC = EC*adcConvert/1000; // volts 
-  if (EC < 0.1) {
+  if (EC < 100) {
     Serial.print("0.00"); 
   } else {
-    EC = 919*EC - 375; 
+    EC = 3.0234*EC - 369.6448; 
     Serial.print(EC); 
   } 
   Serial.print(", "); 
@@ -171,11 +170,10 @@ void printEC() {
 
 void printOC() {
   OC = analogRead(OCPin); 
-  OC = OC*adcConvert/1000; 
-  if (OC < 0.1) {
+  if (OC < 100) {
     Serial.print("0.00"); 
   } else {
-    OC = 919*OC - 375; 
+    OC = 3.0234*OC - 369.6448; 
     Serial.print(OC); 
   }
   Serial.print(", "); 
@@ -183,11 +181,10 @@ void printOC() {
 
 void printPC() {
   PC = analogRead(PCPin);
-  PC = PC*adcConvert/1000; 
-  if (PC < 0.1) {
+  if (PC < 100) {
     Serial.print("0.00"); 
   } else {
-    PC = 919*PC - 375; 
+    PC = 3.0234*PC - 369.6448; 
     Serial.print(PC); 
   }
   Serial.print(", "); 
