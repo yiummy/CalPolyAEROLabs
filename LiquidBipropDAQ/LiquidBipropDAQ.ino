@@ -127,32 +127,28 @@ void readSensors() {
 
 void printOH() {
   oH = analogRead(oVHPin); 
-  oH = oH * adcConvert; 
-  oH = (oH - 9.12)/3.25; 
+  oH = (oH-2.58)/0.279; 
   Serial.print(oH); 
   Serial.print(", "); 
 }
 
 void printOL() {
   oL = analogRead(oVLPin); 
-  oL = oL*adcConvert; 
-  oL = (oL - 5.96)/3.32; 
+  oL = (oL-0.258)/0.277; 
   Serial.print(oL); 
   Serial.print(", "); 
 }
 
 void printEH() {
   eH = analogRead(ethVHPin); 
-  eH = eH*adcConvert; 
-  eH = (eH + 21.76)/3.4; 
+  eH = (eH-16.7)/0.296; 
   Serial.print(eH); 
   Serial.print(", "); 
 }
 
 void printEL() {
   eL = analogRead(ethVLPin); 
-  eL = eL*adcConvert; 
-  eL = (eL + 19.27)/3.41; 
+  eL = (eL-18.4)/0.293); 
   Serial.print(eL); 
   Serial.print(", "); 
 }
